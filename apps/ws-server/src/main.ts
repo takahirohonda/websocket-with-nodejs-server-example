@@ -1,14 +1,12 @@
-import express from 'express';
+import { WebSocketServer } from 'ws'
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+const wss = new WebSocketServer({ port: 443 })
 
-const app = express();
+wss.on('connection', function connection(ws) {
+  ws.on('error', console.error)
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
-
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+  ws.on('message', function message(data) {
+    console.log('received: %s', data)
+    ws.send(`We received your message: ${data}`)
+  })
+})

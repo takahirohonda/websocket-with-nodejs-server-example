@@ -38,13 +38,14 @@
         }
       }
     },
-    "serve": {
+    "dev": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "ws-server:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": false,
+        "inspect": true
       },
       "configurations": {
         "development": {
