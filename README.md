@@ -22,4 +22,4 @@ yarn artillery run load-test.yml
 
 https://developer.chrome.com/docs/devtools/performance/nodejs
 
-chrome://inspect/#devices
+`chrome://inspect`
