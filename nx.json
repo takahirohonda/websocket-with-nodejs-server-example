@@ -39,7 +39,7 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/ws-server-e2e/**/*"]
+      "exclude": ["apps/ws-server-e2e/**/*", "apps/micro-ws-server-e2e/**/*"]
     },
     {
       "plugin": "@nx/next/plugin",

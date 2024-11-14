@@ -1,0 +1,59 @@
+{
+  "name": "micro-ws-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/micro-ws-server/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/micro-ws-server",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/micro-ws-server/src/main.ts",
+        "tsConfig": "apps/micro-ws-server/tsconfig.app.json",
+        "assets": ["apps/micro-ws-server/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "dev": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "micro-ws-server:build",
+        "runBuildTargetDependencies": false,
+        "inspect": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "micro-ws-server:build:development"
+        },
+        "production": {
+          "buildTarget": "micro-ws-server:build:production"
+        }
+      }
+    }
+  }
+}

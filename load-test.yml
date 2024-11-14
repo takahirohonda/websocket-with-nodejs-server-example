@@ -9,5 +9,12 @@ scenarios:
       - send: "Hello server"  # Message sent after connection
       - think: 1              # Wait time before next message
       - loop:
-          - send: "Message from client"
-          - think: 1
+        - send: "Message from client"
+        - think: 1
+
+      # This is for running 10 times
+      # - loop:
+      #     - count: 10
+      #       flow:
+      #         - send: "Message from client"
+      #         - think: 1
